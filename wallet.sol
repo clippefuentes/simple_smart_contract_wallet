@@ -20,6 +20,9 @@ contract wallet {
     
     mapping(address => Balance) public balanceRecord;
     
+    event sentMoney(address indexed address1, uint amount1);
+    event recieveMoney(address indexed address1, uint amount1);
+
     modifier onlyOwner() {
         require(msg.sender == owner);
         _;
@@ -38,7 +41,8 @@ contract wallet {
         balanceRecord[msg.sender].totalBalance += msg.value;
         balanceRecord[msg.sender].numpay += 1;
         Payment memory pay = Payment(msg.value, now);
-        balanceRecord[msg.sender].payments[balanceRecord[msg.sender].numpay] = pay; 
+        balanceRecord[msg.sender].payments[balanceRecord[msg.sender].numpay] = pay;
+        emit sentMoney(msg.sender, msg.value);
     }
     
     function getBalance() public view notPause returns (uint) {
@@ -53,6 +57,7 @@ contract wallet {
         require(balanceRecord[msg.sender].totalBalance >= _amount, "Not Enough Funds");
         balanceRecord[msg.sender].totalBalance -= _amount;
         msg.sender.transfer(_amount);
+        emit recieveMoney(msg.sender, _amount);
     }
     
     function destroy(address payable ender) public onlyOwner {
