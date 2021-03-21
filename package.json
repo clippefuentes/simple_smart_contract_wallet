@@ -1,0 +1,23 @@
+{
+  "name": "simple_wallet_eth_smart_contract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clippefuentes/simple_smart_contract_wallet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clippefuentes/simple_smart_contract_wallet/issues"
+  },
+  "homepage": "https://github.com/clippefuentes/simple_smart_contract_wallet#readme",
+  "dependencies": {
+    "web3": "^1.3.4"
+  }
+}
